@@ -1,0 +1,48 @@
+html, body {
+  margin: 20px;
+}
+
+.super_number {
+  margin: 30px 0 30px 0;
+  display: inline-block;
+  position: relative;
+}
+.super_number a.increment,
+.super_number a.decrement {
+  font-family: Helvetica, Arial, sans-serif;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  height: 30px;
+  font-weight: 200;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  font-size: 30px;
+  line-height: 26px;
+  background: #d7472b;
+  transition: background linear 0.2s;
+  -webkit-transition: background linear 0.2s;
+  -moz-transition: background linear 0.2;
+}
+.super_number a.increment:hover,
+.super_number a.decrement:hover {
+  background: #f4401d;
+}
+.super_number a.increment {
+  user-select: none;
+  bottom: 100%;
+  -moz-border-radius-topleft: 3px;
+  border-top-left-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  border-top-right-radius: 3px;
+}
+.super_number a.decrement {
+  user-select: none;
+  top: 100%;
+  -moz-border-radius-bottomleft: 3px;
+  border-bottom-left-radius: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-bottom-right-radius: 3px;
+}
