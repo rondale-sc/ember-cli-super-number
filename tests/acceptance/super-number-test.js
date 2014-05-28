@@ -101,3 +101,14 @@ test('specify maximum value', function(){
   click('#max .increment');
   andThen(function() { equal(find("#max input").val(), "1"); });
 });
+
+test('specify step value', function(){
+  expect(1);
+
+  visit("/");
+  fillIn("#step input", "0");
+  click("#step .increment");
+  click("#step .increment");
+  click("#step .increment");
+  andThen(function(){ equal(find("#step input").val(), "15"); });
+});
