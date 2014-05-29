@@ -8,6 +8,20 @@ export default Ember.Component.extend({
   max: null,
   loop: false,
   step: 1,
+  roundTo: function(value, num) {
+    var resto = value % num;
+    if (resto <= (num / 2)) {
+      return value - resto;
+    } else {
+      return value + num - resto;
+    }
+  },
+  focusOut: function() {
+    var value = parseInt(this.get('value')),
+        step  = parseInt(this.get('step'));
+
+    this.set('value', this.roundTo(value,step));
+  },
   keyDown: function(e) {
     if(e.which === DOWN_ARROW) {
       this.send('decrement');

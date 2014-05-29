@@ -112,3 +112,12 @@ test('specify step value', function(){
   click("#step .increment");
   andThen(function(){ equal(find("#step input").val(), "15"); });
 });
+
+test('force value to conform to step on blur', function(){
+  expect(1);
+
+  visit("/");
+  fillIn("#step input", "6");
+  andThen(function(){ $("#step").blur(); });
+  andThen(function(){ equal(find("#step input").val(), "5"); });
+});
