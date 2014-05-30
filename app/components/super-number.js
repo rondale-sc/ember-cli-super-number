@@ -1,26 +1,36 @@
+import NumberFormatter from "ember-super-number/utils/number-formatter";
+
 var DOWN_ARROW = 40,
     UP_ARROW = 38;
 
 export default Ember.Component.extend({
   classNames: ["super_number"],
-  value: 0,
+  value: null,
   min: null,
   max: null,
+  precision: null,
+  scale: null,
   loop: false,
   step: 1,
-  roundTo: function(value, num) {
-    var resto = value % num;
-    if (resto <= (num / 2)) {
-      return value - resto;
-    } else {
-      return value + num - resto;
-    }
-  },
-  focusOut: function() {
-    var value = parseInt(this.get('value')),
-        step  = parseInt(this.get('step'));
+  numberFormatter: null,
+  init: function() {
+    this._super();
 
-    this.set('value', this.roundTo(value,step));
+    var options = {
+      step:      this.get('step'),
+      precision: this.get('precision'),
+      scale:     this.get('scale'),
+      min:       this.get('min'),
+      max:       this.get('max')
+    };
+
+    this.set('numberFormatter', new NumberFormatter(this.get('value'), options));
+  },
+  syncFormatter: function(){
+    this.set('numberFormatter', this.numberFormatter.setValue(this.get('value')));
+  }.observes('value'),
+  focusOut: function(){
+    this.set('value', this.get('numberFormatter').toString());
   },
   keyDown: function(e) {
     if(e.which === DOWN_ARROW) {
@@ -29,42 +39,15 @@ export default Ember.Component.extend({
       this.send('increment');
     }
   },
+
   nextValue: function(){
-    var max   = this.get('max');
-    var min   = this.get('min');
-    var value = ~~this.get('value');
-
-    // loop
-    if(max && min && value > (max - 1)){
-      return this.get('loop') ? min : value;
-    }
-
-    // increment no further than max
-    if (max != null && value >= max) {
-      return max;
-    }
-
-    // default increment
-    return value + this.get('step');
+    return this.get('numberFormatter').add(this.get('step'));
   },
+
   previousValue: function(){
-    var max   = this.get('max');
-    var min   = this.get('min');
-    var value = ~~this.get('value');
-
-    // loop
-    if(max && min && value < (min + 1)) {
-      return this.get('loop') ? max : value;
-    }
-
-    // decrement no further than min
-    if(min != null && value <= min) {
-      return min;
-    }
-
-    // default decrement
-    return value - this.get('step');
+    return this.get('numberFormatter').subtract(this.get('step'));
   },
+
   actions: {
     increment: function(){
       this.set('value', this.nextValue());

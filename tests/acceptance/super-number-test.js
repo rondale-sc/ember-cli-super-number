@@ -121,3 +121,23 @@ test('force value to conform to step on blur', function(){
   andThen(function(){ $("#step").blur(); });
   andThen(function(){ equal(find("#step input").val(), "5"); });
 });
+
+test('specify precision', function(){
+  expect(1);
+
+  visit("/");
+  fillIn("#precision input", "001");
+  click("#precision .increment");
+
+  andThen(function(){ equal(find("#precision input").val(), "002"); });
+});
+
+test('specify scale', function(){
+  expect(1);
+
+  visit("/");
+  fillIn("#scale input", "111");
+  click("#scale .increment");
+
+  andThen(function(){ equal(find("#scale input").val(), "112.00"); });
+});
