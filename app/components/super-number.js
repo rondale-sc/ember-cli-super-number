@@ -21,7 +21,8 @@ export default Ember.Component.extend({
       precision: this.get('precision'),
       scale:     this.get('scale'),
       min:       this.get('min'),
-      max:       this.get('max')
+      max:       this.get('max'),
+      loop:      this.get('loop')
     };
 
     this.set('numberFormatter', new NumberFormatter(this.get('value'), options));
@@ -49,10 +50,10 @@ export default Ember.Component.extend({
   },
 
   actions: {
-    increment: function(){
+    handleIncrement: function(e){
       this.set('value', this.nextValue());
     },
-    decrement: function(){
+    handleDecrement: function(){
       this.set('value', this.previousValue());
     }
   }

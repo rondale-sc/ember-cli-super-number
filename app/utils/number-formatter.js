@@ -42,15 +42,21 @@ proto.setValue = function(value) {
 
 proto.add = function(x) {
   var value = parseFloat(this._value) + parseFloat(x);
-  this.setValue(value);
+  var o = this._options;
 
+  if(o.loop && o.min && o.max && o.max < value) { value = o.min; }
+
+  this.setValue(value);
   return this.toString();
 };
 
 proto.subtract = function(x) {
   var value = parseFloat(this._value) - parseFloat(x);
-  this.setValue(value);
+  var o = this._options;
 
+  if(o.loop && o.min && o.max && value < o.min) { value = o.max; }
+
+  this.setValue(value);
   return this.toString();
 };
 

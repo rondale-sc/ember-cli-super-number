@@ -141,3 +141,28 @@ test('specify scale', function(){
 
   andThen(function(){ equal(find("#scale input").val(), "112.00"); });
 });
+
+test('loop back to min when step exceeds max', function() {
+  expect(1);
+
+  visit("/");
+  fillIn("#loop input", "9");
+  click("#loop .increment");
+
+  andThen(function(){ equal(find("#loop input").val(), "1"); });
+});
+
+test('continues to increment when increment is held down', function(){
+  expect(1);
+
+  visit("/");
+  Em.$('#max .increment').trigger('mousedown');
+
+  andThen(function(){
+    setTimeout(function(){
+      Em.$('#max-hold .increment').trigger('mouseup');
+    }, 500);
+
+    ok(Em.$('#max input').val() === "1");
+  });
+});
