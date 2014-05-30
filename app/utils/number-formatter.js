@@ -7,6 +7,10 @@ var NumberFormater = function(value, options) {
     value = null;
   }
 
+  if (value != null & (parseFloat(value)).toString() === "NaN") {
+    value = (this._options.min || "0");
+  }
+
   this.setValue(value);
 };
 
@@ -21,12 +25,15 @@ var snapToNearestStep = function(value, num) {
 
 var proto = NumberFormater.prototype;
 
-
 proto.setValue = function(value) {
   value = value === null ? "0" : value;
 
+  if(this._options.min && value < this._options.min) { value = this._options.min; }
+
+  if(this._options.max && value > this._options.max) { value = this._options.max; }
+
   if(this._options.step) {
-    value = snapToNearestStep((parseFloat(value) || 0), this._options.step);
+    value = snapToNearestStep((parseFloat(value) || 0), parseFloat(this._options.step));
   }
 
   this._value = ((parseFloat(value)).toString() === "NaN") ? "0" : value;
@@ -35,21 +42,15 @@ proto.setValue = function(value) {
 
 proto.add = function(x) {
   var value = parseFloat(this._value) + parseFloat(x);
-  if(this._options.step) { value = snapToNearestStep(value, this._options.step); }
-
-  if(this._options.max && value > this._options.max) { value = this._options.max; }
-  this._value = (value).toString();
+  this.setValue(value);
 
   return this.toString();
 };
 
 proto.subtract = function(x) {
   var value = parseFloat(this._value) - parseFloat(x);
-  if(this._options.step) { value = snapToNearestStep(value, this._options.step); }
+  this.setValue(value);
 
-  if(this._options.min && value < this._options.min) { value = this._options.min; }
-
-  this._value = (value).toString();
   return this.toString();
 };
 

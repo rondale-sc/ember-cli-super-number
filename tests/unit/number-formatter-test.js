@@ -189,6 +189,12 @@ test('when provided a step = subtracts to nearest factor of step', function(){
 
 module("unit:number-formatter:min_max");
 
+test('garbage value initializes to min', function() {
+  expect(1);
+  var nf = new NumberFormatter("blarf", {min: 5});
+  strictEqual(nf.toString(), "5");
+});
+
 test('prevents subtracting past min', function(){
   expect(1);
   var nf = new NumberFormatter(8, {min: 5});
@@ -201,4 +207,50 @@ test('prevents adding past max', function(){
   var nf = new NumberFormatter(3, {max: 5});
   nf.add(6);
   strictEqual(nf.toString(), "5");
+});
+
+module("unit:number-formatter:smoke_test");
+
+test("smoke test numeric", function() {
+  expect(3);
+
+  var options = {
+    step:      0.01,
+    precision: 5,
+    scale:     2,
+    min:       3,
+    max:       6
+  };
+
+  var nf = new NumberFormatter("foo", options);
+  nf.add(0.01);
+  nf.add(0.006);
+  nf.subtract(0.01);
+  strictEqual(nf.toString(), "003.01");
+  nf.add(10);
+  strictEqual(nf.toString(), "006.00");
+  nf.subtract(8);
+  strictEqual(nf.toString(), "003.00");
+});
+
+test("smoke test strings", function() {
+  expect(3);
+
+  var options = {
+    step:      0.01,
+    precision: 5,
+    scale:     2,
+    min:       3,
+    max:       6
+  };
+
+  var nf = new NumberFormatter("foo", options);
+  nf.add("0.01");
+  nf.add("0.006");
+  nf.subtract("0.01");
+  strictEqual(nf.toString(), "003.01");
+  nf.add("10");
+  strictEqual(nf.toString(), "006.00");
+  nf.subtract("8");
+  strictEqual(nf.toString(), "003.00");
 });
