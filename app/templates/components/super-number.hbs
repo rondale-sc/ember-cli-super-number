@@ -1,3 +1,9 @@
 {{input type="text" value=value}}
-<a class="increment" href="#" {{action "increment"}}>+</a>
-<a class="decrement" href="#" {{action "decrement"}}>-</a>
+
+{{#directional-link action="handleIncrement"}}
+  <a class="increment" href="#">+</a>
+{{/directional-link}}
+
+{{#directional-link action="handleDecrement"}}
+  <a class="decrement" href="#">-</a>
+{{/directional-link}}

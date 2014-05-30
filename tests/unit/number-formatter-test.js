@@ -254,3 +254,20 @@ test("smoke test strings", function() {
   nf.subtract("8");
   strictEqual(nf.toString(), "003.00");
 });
+
+
+test("It loops!", function() {
+  expect(2);
+
+  var options = {
+    loop:      true,
+    min:       3,
+    max:       6
+  };
+
+  var nf = new NumberFormatter("6", options);
+  nf.add("1");
+  strictEqual(nf.toString(), "3");
+  nf.subtract("1");
+  strictEqual(nf.toString(), "6");
+});

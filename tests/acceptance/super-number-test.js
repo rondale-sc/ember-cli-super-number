@@ -141,3 +141,29 @@ test('specify scale', function(){
 
   andThen(function(){ equal(find("#scale input").val(), "112.00"); });
 });
+
+test('loop back to min when step exceeds max', function() {
+  expect(1);
+
+  visit("/");
+  fillIn("#loop input", "9");
+  click("#loop .increment");
+
+  andThen(function(){ equal(find("#loop input").val(), "1"); });
+});
+
+asyncTest('continues to increment when increment is held down', function(){
+  expect(1);
+
+  Ember.run(function(){
+    visit("/").then(function() {
+      Em.$('#max-hold .increment').trigger('mousedown');
+
+      Ember.run.later(this, function(){
+        Em.$('#max-hold .increment').trigger('mouseup');
+        start();
+        ok(Em.$('#max-hold input').val() === "3");
+      }, 500);
+    });
+  });
+});

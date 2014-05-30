@@ -15,15 +15,7 @@ export default Ember.Component.extend({
   numberFormatter: null,
   init: function() {
     this._super();
-
-    var options = {
-      step:      this.get('step'),
-      precision: this.get('precision'),
-      scale:     this.get('scale'),
-      min:       this.get('min'),
-      max:       this.get('max')
-    };
-
+    var options = this.getProperties('step', 'precision', 'scale', 'min', 'max', 'loop');
     this.set('numberFormatter', new NumberFormatter(this.get('value'), options));
   },
   syncFormatter: function(){
@@ -34,26 +26,17 @@ export default Ember.Component.extend({
   },
   keyDown: function(e) {
     if(e.which === DOWN_ARROW) {
-      this.send('decrement');
+      this.send('handleDecrement');
     } else if(e.which === UP_ARROW) {
-      this.send('increment');
+      this.send('handleIncrement');
     }
   },
-
-  nextValue: function(){
-    return this.get('numberFormatter').add(this.get('step'));
-  },
-
-  previousValue: function(){
-    return this.get('numberFormatter').subtract(this.get('step'));
-  },
-
   actions: {
-    increment: function(){
-      this.set('value', this.nextValue());
+    handleIncrement: function(){
+      this.set('value', this.get('numberFormatter').add(this.get('step')));
     },
-    decrement: function(){
-      this.set('value', this.previousValue());
+    handleDecrement: function(){
+      this.set('value', this.get('numberFormatter').subtract(this.get('step')));
     }
   }
 });
