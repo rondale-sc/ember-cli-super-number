@@ -1,4 +1,4 @@
-var NumberFormater = function(value, options) {
+var NumberFormatter = function(value, options) {
   this._options = options || {};
 
   if (value != null && typeof value === "object") {
@@ -22,7 +22,7 @@ var snapToNearestStep = function(value, num) {
   }
 };
 
-var proto = NumberFormater.prototype;
+var proto = NumberFormatter.prototype;
 
 proto.setValue = function(value) {
   value = value === null ? "0" : value;
@@ -85,4 +85,4 @@ proto.toString = function() {
   return value;
 };
 
-export default NumberFormater;
+export default NumberFormatter;
