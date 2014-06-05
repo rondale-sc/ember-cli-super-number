@@ -8,6 +8,7 @@ This repository contains a ember component and its associated tests.  This is mo
 * here in a [gist](https://gist.github.com/rondale-sc/3e0e86d6cf103a9e77e9#file-directional-link-js)
 * here in [jsbin](http://jsbin.com/soqew/1)
 
+![example image](http://i.imgur.com/u7cXbhU.png)
 
 # Installation
 
