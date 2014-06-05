@@ -1,6 +1,8 @@
 # Ember Super Number
 
-This repository contains a ember component and its associated tests.  This is mostly feature compatible with Shane Riley's [super number plugin](https://github.com/shaneriley/super_number) with some minor differences around precision. 
+Ember Super Number is a component that let's you intelligently deal with increment and decrement controls on a given input.  It handles all sorts of configurations, and user input sanitization.  You can see a demo below. Let me know what you think!
+
+This is mostly feature compatible with Shane Riley's [super number plugin](https://github.com/shaneriley/super_number) with some minor differences around precision. 
 
 
 # Demo
