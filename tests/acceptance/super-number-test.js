@@ -1,4 +1,4 @@
-import startApp from "ember-super-number/tests/helpers/start-app";
+import startApp from "ember-cli-super-number/tests/helpers/start-app";
 
 var App;
 

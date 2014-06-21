@@ -15,7 +15,7 @@ var app = new EmberApp({
 });
 
 
-app.import('vendor/ember-super-number/styles/style.css');
+app.import('vendor/ember-cli-super-number/styles/style.css');
 
 // Use `app.import` to add additional libraries to the generated
 // output files.

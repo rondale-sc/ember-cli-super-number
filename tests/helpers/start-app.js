@@ -1,7 +1,7 @@
 /* global require */
 
-var Application = require('ember-super-number/app')['default'];
-var Router = require('ember-super-number/router')['default'];
+var Application = require('ember-cli-super-number/app')['default'];
+var Router = require('ember-cli-super-number/router')['default'];
 
 export default function startApp(attrs) {
   var App;
