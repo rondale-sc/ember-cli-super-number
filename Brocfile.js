@@ -1,17 +1,21 @@
 /* global require, module */
 
 var mergeTrees = require('broccoli-merge-trees');
+
 var appTree    = mergeTrees(['app', 'app-addon'], { overwrite: true });
-var styleTree  = mergeTrees(['app/styles', 'styles-addon']);
+var vendorTree = mergeTrees(['vendor', 'vendor-addon']);
 
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp({
   trees: {
     app: appTree,
-    styles: styleTree
+    vendor: vendorTree
   }
 });
+
+
+app.import('vendor/ember-super-number/styles/style.css');
 
 // Use `app.import` to add additional libraries to the generated
 // output files.
