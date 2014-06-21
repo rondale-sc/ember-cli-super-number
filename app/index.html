@@ -9,15 +9,18 @@
 
     {{BASE_TAG}}
 
+    <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/ember-super-number.css">
   </head>
   <body>
     <script>
-      window.ENV = {{ENV}};
+      window.EmberSuperNumberENV = {{ENV}};
+      window.EmberENV = window.EmberSuperNumberENV.EmberENV;
     </script>
+    <script src="assets/vendor.js"></script>
     <script src="assets/ember-super-number.js"></script>
     <script>
-      window.EmberSuperNumber = require('ember-super-number/app')['default'].create(ENV.APP);
+      window.EmberSuperNumber = require('ember-super-number/app')['default'].create(EmberSuperNumberENV.APP);
     </script>
   </body>
 </html>

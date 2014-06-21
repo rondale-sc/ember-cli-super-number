@@ -9,22 +9,42 @@
 
     {{BASE_TAG}}
 
+    <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/ember-super-number.css">
     <link rel="stylesheet" href="assets/qunit.css">
+    <style>
+      #ember-testing-container {
+        position: absolute;
+        background: white;
+        bottom: 0;
+        right: 0;
+        width: 640px;
+        height: 384px;
+        overflow: auto;
+        z-index: 9999;
+        border: 1px solid #ccc;
+      }
+      #ember-testing {
+        zoom: 50%;
+      }
+    </style>
   </head>
   <body>
     <div id="qunit"></div>
     <div id="qunit-fixture"></div>
 
     <script>
-      window.ENV = {{ENV}};
+      window.EmberSuperNumberENV = {{ENV}};
+      window.EmberENV = window.EmberSuperNumberENV.EmberENV;
     </script>
     <script src="assets/qunit.js"></script>
+    <script src="assets/qunit-notifications.js"></script>
+    <script src="assets/vendor.js"></script>
     <script src="assets/ember-super-number.js"></script>
     <script src="testem.js"></script>
     <script>
       require('ember-super-number/tests/test-helper');
-      require('ember-super-number/tests/test-loader');
     </script>
+    <script src="assets/test-loader.js"></script>
   </body>
 </html>
