@@ -1,3 +1,5 @@
+import Ember from 'ember';
+
 function mouseHoldStop() {
   Ember.run.cancel(this._lastRunLater);
 }

@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import NumberFormatter from "ember-super-number/utils/ember-super-number/number-formatter";
 
 var DOWN_ARROW = 40,
