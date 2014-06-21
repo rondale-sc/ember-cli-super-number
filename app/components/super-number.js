@@ -1,4 +1,4 @@
-import NumberFormatter from "ember-super-number/utils/number-formatter";
+import NumberFormatter from "ember-super-number/utils/ember-super-number/number-formatter";
 
 var DOWN_ARROW = 40,
     UP_ARROW = 38;
