@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-super-number",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "ember-addon-main": "lib/ember-cli-super-number.js",
   "directories": {
     "doc": "doc",
@@ -11,7 +11,7 @@
     "build": "ember build",
     "test": "ember test"
   },
-  "repository": "https://github.com/stefanpenner/ember-cli",
+  "repository": "https://github.com/rondale-sc/ember-cli-super-number",
   "engines": {
     "node": ">= 0.10.0"
   },
