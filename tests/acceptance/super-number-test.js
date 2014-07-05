@@ -1,4 +1,5 @@
 import startApp from "ember-cli-super-number/tests/helpers/start-app";
+import Ember from 'ember';
 
 var App;
 
@@ -157,12 +158,12 @@ asyncTest('continues to increment when increment is held down', function(){
 
   Ember.run(function(){
     visit("/").then(function() {
-      Em.$('#max-hold .increment').trigger('mousedown');
+      Ember.$('#max-hold .increment').trigger('mousedown');
 
       Ember.run.later(this, function(){
-        Em.$('#max-hold .increment').trigger('mouseup');
+        Ember.$('#max-hold .increment').trigger('mouseup');
         start();
-        ok(Em.$('#max-hold input').val() === "3");
+        ok(Ember.$('#max-hold input').val() === "3");
       }, 500);
     });
   });

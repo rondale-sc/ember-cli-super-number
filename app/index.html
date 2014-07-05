@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>EmberSuperNumber</title>
+    <title>EmberCliSuperNumber</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,13 +14,13 @@
   </head>
   <body>
     <script>
-      window.EmberSuperNumberENV = {{ENV}};
-      window.EmberENV = window.EmberSuperNumberENV.EmberENV;
+      window.EmberCliSuperNumberENV = {{ENV}};
+      window.EmberENV = window.EmberCliSuperNumberENV.EmberENV;
     </script>
     <script src="assets/vendor.js"></script>
     <script src="assets/ember-cli-super-number.js"></script>
     <script>
-      window.EmberSuperNumber = require('ember-cli-super-number/app')['default'].create(EmberSuperNumberENV.APP);
+      window.EmberCliSuperNumber = require('ember-cli-super-number/app')['default'].create(EmberCliSuperNumberENV.APP);
     </script>
   </body>
 </html>
