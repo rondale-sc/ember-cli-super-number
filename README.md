@@ -1,5 +1,7 @@
 # Ember Super Number
 
+*The conversion of this to an Ember CLI addon has been documented in this blog post: ["Building Ember CLI Addons Simply"](http://hashrocket.com/blog/posts/building-ember-addons)
+
 Ember Super Number is a component that let's you intelligently deal with increment and decrement controls on a given input.  It handles all sorts of configurations, and user input sanitization.  You can see a demo below. Let me know what you think!
 
 This is mostly feature compatible with Shane Riley's [super number plugin](https://github.com/shaneriley/super_number) with some minor differences around precision. 
