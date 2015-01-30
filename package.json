@@ -1,7 +1,9 @@
 {
   "name": "ember-cli-super-number",
   "version": "0.1.0",
-  "ember-addon-main": "lib/ember-cli-super-number.js",
+  "ember-addon": {
+    "main": "lib/ember-cli-super-number.js"
+  },
   "directories": {
     "doc": "doc",
     "test": "test"
